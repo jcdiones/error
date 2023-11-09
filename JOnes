@@ -1,7 +1,6 @@
-fatal: [192.168.56.104]: FAILED! => {"changed": false, "msg": "value of state must be one of: absent, disabled, enabled, present, got: started"}
-- name: Allow SSH traffic through the firewall
-      ansible.builtin.firewalld:
-        service: ssh
-        state: started
-      when: ansible_distribution == "CentOS"
-fatal: [192.168.56.104]: FAILED! => {"changed": false, "msg": "ERROR: Exception caught: org.fedoraproject.slip.dbus.service.PolKit.NotAuthorizedException.org.fedoraproject.FirewallD1.config.info: "}
+fatal: [192.168.56.102]: FAILED! => {"changed": false, "msg": "'/usr/bin/apt-mark manual ufw' failed: E: Could not create temporary file for /var/lib/apt/extended_states - mkstemp (13: Permission denied)\nE: Failed to write temporary StateFile /var/lib/apt/extended_states\n", "rc": 100, "stderr": "E: Could not create temporary file for /var/lib/apt/extended_states - mkstemp (13: Permission denied)\nE: Failed to write temporary StateFile /var/lib/apt/extended_states\n", "stderr_lines": ["E: Could not create temporary file for /var/lib/apt/extended_states - mkstemp (13: Permission denied)", "E: Failed to write temporary StateFile /var/lib/apt/extended_states"], "stdout": "", "stdout_lines": []}
+ - name: Install the required packages on Ubuntu
+      ansible.builtin.apt:
+        name: ufw
+        state: present
+      when: ansible_distribution == "Ubuntu"
