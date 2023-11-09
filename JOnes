@@ -1,5 +1,6 @@
-fatal: [192.168.56.104]: FAILED! => {"changed": false, "msg": "missing parameter(s) required by 'state': name"}
-- name: Configure the firewall rules
-      ansible.builtin.service:
+fatal: [192.168.56.104]: FAILED! => {"changed": false, "msg": "value of state must be one of: absent, disabled, enabled, present, got: started"}
+- name: Allow SSH traffic through the firewall
+      ansible.builtin.firewalld:
+        service: ssh
         state: started
       when: ansible_distribution == "CentOS"
