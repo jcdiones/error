@@ -1,1 +1,5 @@
-fatal: [192.168.56.104]: FAILED! => {"changed": false, "msg": "Unsupported parameters for (ansible.legacy.systemd) module: permanent, zone Supported parameters include: daemon_reexec, daemon_reload, enabled, force, masked, name, no_block, scope, state, user"}
+fatal: [192.168.56.104]: FAILED! => {"changed": false, "msg": "missing parameter(s) required by 'state': name"}
+- name: Configure the firewall rules
+      ansible.builtin.service:
+        state: started
+      when: ansible_distribution == "CentOS"
