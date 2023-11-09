@@ -4,3 +4,4 @@ fatal: [192.168.56.104]: FAILED! => {"changed": false, "msg": "value of state mu
         service: ssh
         state: started
       when: ansible_distribution == "CentOS"
+fatal: [192.168.56.104]: FAILED! => {"changed": false, "msg": "ERROR: Exception caught: org.fedoraproject.slip.dbus.service.PolKit.NotAuthorizedException.org.fedoraproject.FirewallD1.config.info: "}
